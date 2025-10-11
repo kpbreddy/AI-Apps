@@ -83,4 +83,4 @@ if st.button("✨ Generate Itinerary"):
 
 # --- Footer ---
 st.markdown("---")
-st.caption("💡 Powered by AWS Bedrock (Claude 3 Sonnet) + LangChain + Streamlit | Built by [Your Name]")
+st.caption("💡 Powered by AWS Bedrock (Claude 3 Sonnet) + LangChain + Streamlit | Built by Pravin Menghani")
