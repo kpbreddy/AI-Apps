@@ -2,18 +2,25 @@ import streamlit as st
 import json
 import requests
 from datetime import datetime, timedelta
-import openai  # or use anthropic if you prefer Claude
+from openai import OpenAI
 
 # ---- CONFIG ----
 st.set_page_config(page_title="🧠 Personal Learning Path Generator", page_icon="🧭", layout="centered")
 
 # Replace with your API key
-openai.api_key = st.secrets.get("OPENAI_API_KEY", "your_openai_api_key_here")
+try:
+    api_key = st.secrets["OPENAI_API_KEY"]
+    client = OpenAI(api_key=api_key)
+except (KeyError, FileNotFoundError):
+    client = None
 
 # Optional YouTube search function
 def search_youtube(query, max_results=3):
     """Search YouTube for learning videos related to a topic"""
-    YOUTUBE_API_KEY = st.secrets.get("YOUTUBE_API_KEY", "your_youtube_api_key_here")
+    try:
+        YOUTUBE_API_KEY = st.secrets["YOUTUBE_API_KEY"]
+    except (KeyError, FileNotFoundError):
+        return []
     if not YOUTUBE_API_KEY or YOUTUBE_API_KEY == "your_youtube_api_key_here":
         return []
     url = (
@@ -69,7 +76,11 @@ if submitted:
         }}
         """
         try:
-            response = openai.ChatCompletion.create(
+            if not client:
+                st.error("⚠️ OpenAI API key not configured. Please add your API key to .streamlit/secrets.toml")
+                st.stop()
+                
+            response = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are an AI learning path creator."},
@@ -84,7 +95,8 @@ if submitted:
             json_data = json.loads(raw_output[json_start:json_end + 1])
         except Exception as e:
             st.error(f"Error parsing model output: {e}")
-            st.code(raw_output)
+            if 'raw_output' in locals():
+                st.code(raw_output)
             st.stop()
 
         # ---- DISPLAY LEARNING PATH ----
