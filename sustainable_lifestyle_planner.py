@@ -54,7 +54,7 @@ if st.button("🌍 Generate My Sustainability Plan"):
             prompt_template = PromptTemplate(
                 input_variables=["name", "focus_areas", "plan_type", "goal_duration", "motivation_level"],
                 template="""
-                Create a {plan_type.lower()} for {name}, focused on living a sustainable lifestyle.
+                Create a {plan_type} for {name}, focused on living a sustainable lifestyle.
                 Areas of focus: {focus_areas}.
                 Duration: {goal_duration} weeks.
                 Motivation level: {motivation_level}.
@@ -70,10 +70,13 @@ if st.button("🌍 Generate My Sustainability Plan"):
                 """
             )
 
+            # ✅ Fix here — precompute lowercase version
+            plan_type_clean = plan_type.lower()
+
             formatted_prompt = prompt_template.format(
                 name=name,
                 focus_areas=", ".join(focus_areas),
-                plan_type=plan_type,
+                plan_type=plan_type_clean,
                 goal_duration=goal_duration,
                 motivation_level=motivation_level
             )
@@ -90,7 +93,3 @@ if st.button("🌍 Generate My Sustainability Plan"):
                 file_name=f"{name}_SustainabilityPlan.txt",
                 mime="text/plain"
             )
-
-# --- Footer ---
-st.markdown("---")
-st.caption("🌿 Built with ❤️ using AWS Bedrock (Claude 3 Sonnet) + Streamlit | Inspire change, one habit at a time.")
