@@ -1,16 +1,13 @@
-# Core
+# Streamlit UI
 streamlit==1.28.1
+
+# Text-to-speech
 gTTS==2.3.1
-numpy==1.26.4
 
 # LangChain and OpenAI
 langchain==1.2.0
 langchain-openai==0.0.2
 langchain-core==0.0.6
 
-# Transformers (if you plan to switch back to Hugging Face TTS later)
-transformers==4.34.0
-torch==2.3.0
-
-# Optional: audio handling (not needed for gTTS)
-# soundfile==0.13.1
+# Optional: numpy if needed
+numpy==1.26.4
