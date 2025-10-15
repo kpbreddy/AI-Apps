@@ -38,7 +38,7 @@ topic = st.text_input("Enter the country:")
 if topic:
     # Generate title
     title = first_chain.invoke({"topic": topic})
-    st.subheader(f"🍽️ {title}")
+    st.subheader(f" {title}")
 
     # Generate recipe
     recipe = second_chain.invoke({"title": title})
