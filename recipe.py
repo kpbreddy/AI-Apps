@@ -5,35 +5,41 @@ from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-llm = ChatOpenAI(model="gpt-5",api_key=OPENAI_API_KEY)
+if not OPENAI_API_KEY:
+    st.error("OPENAI_API_KEY not found in environment variables.")
+    st.stop()
+
+llm = ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+
 title_prompt = PromptTemplate(
-    input_variables = ["topic"],
-    template = """
-    You are an experienced speech writer.
-    You need to craft an impactful title for a speech
+    input_variables=["topic"],
+    template="""
+    You are an experienced chef-cook.
+    You need to find the favourite recipe based
     on the following topic: {topic}
     Answer exactly with one title.
     """
 )
 
 speech_prompt = PromptTemplate(
-    input_variables = ["title"],
-    template = """
-    You need to write a powerful speech of 350 words
+    input_variables=["title"],
+    template="""
+    You need to write a recipe of about 100 words
     for the following title: {title}
     """
 )
 
 first_chain = title_prompt | llm | StrOutputParser()
-second_chain = speech_prompt | llm
-final_chain = first_chain | second_chain
-st.title("Speech Generator App")
+second_chain = speech_prompt | llm | StrOutputParser()
 
-topic = st.text_input("Enter the topic:")
-title = st.text_input("Enter the title:")
+st.title("Cuisine Recipe App")
+topic = st.text_input("Enter the country:")
 
 if topic:
-    response = final_chain.invoke({"topic": topic, "title": title
-    })
-    st.write(response.content)
-    print(response)
+    # Generate title
+    title = first_chain.invoke({"topic": topic})
+    st.subheader(f"🍽️ {title}")
+
+    # Generate recipe
+    recipe = second_chain.invoke({"title": title})
+    st.write(recipe)
