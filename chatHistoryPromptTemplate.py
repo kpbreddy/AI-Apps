@@ -10,7 +10,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 llm = ChatOpenAI(model="gpt-5",api_key=OPENAI_API_KEY)
 prompt_template = ChatPromptTemplate.from_messages(
     [
-        ("assistant", "You are a Agile coach. Answer any questions"
+        ("system", "You are a Agile coach. Answer any questions"
          "related to agile process"),
         ("user", "{input}")
     ]
