@@ -1,0 +1,13 @@
+# Streamlit UI
+streamlit
+
+# Text-to-speech
+gTTS
+
+# LangChain and OpenAI
+langchain
+langchain-openai
+langchain-core
+
+# Optional: numpy if needed
+numpy

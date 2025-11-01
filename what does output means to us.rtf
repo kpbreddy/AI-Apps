@@ -1,0 +1,94 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+\f3\fmodern\fcharset0 Courier-Bold;\f4\froman\fcharset0 Times-BoldItalic;}
+{\colortbl;\red255\green255\blue255;\red251\green2\blue7;\red0\green0\blue0;\red109\green109\blue109;
+}
+{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww38200\viewh20480\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs48 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 What\'92s there in the output for me?\
+\pard\pardeftab720\sa240\qc\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 The model converts your input into an 
+\f0\b embedding vector
+\f1\b0  \'97 typically a list of 
+\f0\b floating-point numbers
+\f1\b0  (real numbers).\
+For example, you might get something like:\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 \
+[0.00421, -0.01234, 0.00789, ..., 0.00345]\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1 \cf0 Each number represents one dimension in a 
+\f0\b high-dimensional vector space
+\f1\b0  (for 
+\f2 text-embedding-3-small
+\f1 , it\'92s 1536 dimensions).\
+These numbers together encode the 
+\f0\b semantic meaning
+\f1\b0  of your text.\uc0\u8232 Texts with similar meanings will have 
+\f0\b similar embeddings
+\f1\b0  (small cosine distance).\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 \
+\pard\pardeftab720\sa319\partightenfactor0
+
+\f0\b \cf0 \strokec3 7. 
+\f3 print(response)
+\f0 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 This just prints that vector to your terminal.\
+So the output will look like:\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 \
+[0.0123, -0.0087, 0.0342, ..., 0.0011]\
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf4 \strokec4 \
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b \cf0 \strokec3 What those numbers 
+\f4\i mean
+\f0\i0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0
+\f1\b0 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Each number is one coordinate in the embedding space.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 The vector represents the 
+\f0\b meaning
+\f1\b0  of your input sentence.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 If you embed two related texts, their vectors will be close in space (cosine similarity \uc0\u8776  1).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 These embeddings are typically used for:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls1\ilvl1
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Semantic search
+\f1\b0 \
+\ls1\ilvl1
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Document clustering
+\f1\b0 \
+\ls1\ilvl1
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Recommendation systems
+\f1\b0 \
+\ls1\ilvl1
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Context retrieval for LLMs
+\f1\b0 \
+}
